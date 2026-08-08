@@ -14,40 +14,37 @@ fig = px.choropleth(
     color=index_col,
     hover_name="Entity",
     color_continuous_scale=px.colors.sequential.Sunset, 
-    range_color=[0, 100],
-    title=None 
+    range_color=[0, 100]
 )
 
-# 3. 移动端终极排版优化（核心修复区）
+# 3. 终极排版优化
 fig.update_layout(
     geo=dict(
         showframe=False, 
         showcoastlines=True,
         bgcolor='rgba(0,0,0,0)',
-        # 默认将地图适度放大，并调整初始中心点，使其充满屏幕
-        projection_scale=1.1,
-        center=dict(lat=20, lon=0)
+        projection_scale=1.2, # 稍微放大初始地图
     ),
     paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
-    # 将四周的白边距彻底清零，把所有空间还给地图
-    margin=dict(r=0, t=0, l=0, b=0),
+    margin=dict(r=0, t=0, l=0, b=0), # 边距彻底清零
     dragmode="pan",
-    # 强制控制颜色图例（长条）的尺寸和位置
+    # 强制图例长条紧贴右侧且极细
     coloraxis_colorbar=dict(
-        title="",             # 隐藏顶部标题以节省空间
-        thickness=10,         # 将长条变得非常细（宽度仅 10px）
-        len=0.75,             # 长度占据容器的 75%
-        x=1.0,                # 紧紧贴在最右侧边缘
+        title=None,           # 完全去掉标题
+        thickness=8,          # 极细（只有 8px 宽）
+        len=0.7,              # 缩短一点，留出上下空间
+        x=0.98,               # 贴紧最右侧
         xanchor="right",
-        y=0.5,                # 垂直居中
+        y=0.5,
         yanchor="middle",
-        tickfont=dict(size=10) # 缩小刻度数字的字号
+        tickfont=dict(size=10, color="#666"),
+        outlinewidth=0        # 去除长条边框，更清爽
     )
 )
 
-# 4. 注入点击事件脚本并导出
-html_string = fig.to_html(full_html=True, include_plotlyjs='cdn')
+# 4. 关键：导出时，强制隐藏右上角的原生态工具栏 (displayModeBar: False)
+html_string = fig.to_html(full_html=True, include_plotlyjs='cdn', config={'displayModeBar': False})
 
 custom_js = """
 <script>
@@ -71,4 +68,4 @@ final_html = html_string.replace('</body>', f'{custom_js}</body>')
 with open("interactive_map.html", "w", encoding="utf-8") as f:
     f.write(final_html)
 
-print("🎉 Success! interactive_map.html has been generated with mobile layout fixes.")
+print("🎉 Success! 终极版地图已生成！")

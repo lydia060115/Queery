@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Queery | Explore the Spectrum</title>
+    <!-- 引入外部 CSS 样式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Logo Area -->
+    <header>
+        <div class="logo-container">
+            <img class="cookie-img" src="https://emojigraph.org/media/apple/cookie_1f36a.png" alt="Cookie">
+            <div class="rainbow-text">
+                <span class="c-red">Q</span>
+                <span class="c-orange">u</span>
+                <span class="c-yellow">e</span>
+                <span class="c-green">e</span>
+                <span class="c-blue">r</span>
+                <span class="c-purple">y</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Map Section -->
+    <section class="map-container">
+        <!-- 引入 Python 生成的地图 -->
+        <iframe src="interactive_map.html"></iframe>
+    </section>
+
+    <!-- The Nature Section -->
+    <section class="content-module first-module">
+        <h2 class="module-title">Nature's Diversity</h2>
+        <div class="carousel-container">
+            <div class="carousel-card">
+                <h3>Penguins 🐧</h3>
+                <p>In nature and zoos, same-sex penguin couples are frequently observed courting, nesting, and successfully incubating and raising abandoned eggs together.</p>
+                <small>Source: Biological Exuberance, B. Bagemihl (1999)</small>
+            </div>
+            <div class="carousel-card">
+                <h3>Bonobos 🐒</h3>
+                <p>As one of humanity's closest living primate relatives, nearly all individuals in bonobo societies are bisexual. They use same-sex intimacy to resolve conflicts and maintain peace.</p>
+                <small>Source: Biological Exuberance, B. Bagemihl (1999)</small>
+            </div>
+            <div class="carousel-card">
+                <h3>Giraffes 🦒</h3>
+                <p>Intimate behavior between male giraffes is highly frequent. In some populations, over 90% of mounting behaviors occur between males.</p>
+                <small>Source: Biological Exuberance, B. Bagemihl (1999)</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- The History Section -->
+    <section class="content-module bg-light">
+        <h2 class="module-title">Milestones</h2>
+        <div class="timeline">
+            <div class="timeline-event">
+                <div class="timeline-date">1969</div>
+                <div class="timeline-content">
+                    <h4>Stonewall Riots</h4>
+                    <p>The uprising at the Stonewall Inn in New York marked the true awakening of the modern LGBTQ+ rights movement and is the origin of global Pride Month.</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-date">1990</div>
+                <div class="timeline-content">
+                    <h4>WHO Depathologization</h4>
+                    <p>On May 17th, the World Health Organization officially removed homosexuality from its list of mental illnesses (now recognized as IDAHOBIT).</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-date">2001</div>
+                <div class="timeline-content">
+                    <h4>First Marriage Equality</h4>
+                    <p>The Netherlands formally passed legislation becoming the first country in the world to allow same-sex couples to legally marry.</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-date">2019</div>
+                <div class="timeline-content">
+                    <h4>First in Asia</h4>
+                    <p>Taiwan passed a special law for same-sex marriage, becoming the first region in Asia to legalize it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Spectrum Section (Accordion) -->
+    <section class="content-module" style="padding-bottom: 50px;">
+        <h2 class="module-title">The Spectrum</h2>
+        
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-orange">S</span>exual Orientation</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p>Refers to who you are attracted to emotionally, romantically, or sexually (e.g., Lesbian, Gay, Bisexual, Asexual). It's about your internal sense of connection.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-blue">G</span>ender Identity</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p>Refers to your deeply held internal sense of being male, female, both, or neither (e.g., Transgender, Non-binary, Cisgender). It may or may not align with the sex assigned to you at birth.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-red">Q</span>ueer</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p>An inclusive umbrella term encompassing people who are not heterosexual or cisgender. It can also represent "Questioning" for those exploring their identity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部滑动弹窗 (Bottom Sheet) -->
+    <div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeSheet()"></div>
+    <div class="bottom-sheet" id="bottomSheet">
+        <div class="sheet-drag-handle"></div>
+        <button class="sheet-close" onclick="closeSheet()">×</button>
+        <h3 id="sheetCountryName">Country Name</h3>
+        <div class="sheet-tag" id="sheetStatus">Status</div>
+        <div class="sheet-content">
+            <h4>Routine Activities & Reality</h4>
+            <p id="sheetRoutine">Details go here.</p>
+        </div>
+    </div>
+
+    <!-- 引入外部 JavaScript 逻辑 -->
+    <script src="script.js"></script>
+</body>
+</html>

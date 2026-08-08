@@ -1,16 +1,13 @@
 import pandas as pd
 import plotly.express as px
 
-# 1. Load the dataset
+# 1. 读取数据
 df = pd.read_csv('lgbt-legal-equality-index.csv')
-
-# 2. Data Preprocessing
 latest_year = df['Year'].max()
 df_latest = df[df['Year'] == latest_year].dropna(subset=['Code'])
-
 index_col = df.columns[3]
 
-# 3. Draw the interactive map
+# 2. 绘制基础地图
 fig = px.choropleth(
     df_latest,
     locations="Code",
@@ -18,35 +15,47 @@ fig = px.choropleth(
     hover_name="Entity",
     color_continuous_scale=px.colors.sequential.Sunset, 
     range_color=[0, 100],
-    # 隐藏默认的标题，让网页看起来更干净
     title=None 
 )
 
+# 3. 移动端终极排版优化（核心修复区）
 fig.update_layout(
     geo=dict(
         showframe=False, 
         showcoastlines=True,
-        bgcolor='rgba(0,0,0,0)'
+        bgcolor='rgba(0,0,0,0)',
+        # 默认将地图适度放大，并调整初始中心点，使其充满屏幕
+        projection_scale=1.1,
+        center=dict(lat=20, lon=0)
     ),
     paper_bgcolor='rgba(0,0,0,0)',
-    margin={"r":0,"t":0,"l":0,"b":0},
-    dragmode="pan"
+    plot_bgcolor='rgba(0,0,0,0)',
+    # 将四周的白边距彻底清零，把所有空间还给地图
+    margin=dict(r=0, t=0, l=0, b=0),
+    dragmode="pan",
+    # 强制控制颜色图例（长条）的尺寸和位置
+    coloraxis_colorbar=dict(
+        title="",             # 隐藏顶部标题以节省空间
+        thickness=10,         # 将长条变得非常细（宽度仅 10px）
+        len=0.75,             # 长度占据容器的 75%
+        x=1.0,                # 紧紧贴在最右侧边缘
+        xanchor="right",
+        y=0.5,                # 垂直居中
+        yanchor="middle",
+        tickfont=dict(size=10) # 缩小刻度数字的字号
+    )
 )
 
-# 4. 生成 HTML 字符串，并注入点击事件监听器
-# 这是非常关键的一步：利用 Plotly 的 js 接口捕获点击，并通过 postMessage 发送给父页面
+# 4. 注入点击事件脚本并导出
 html_string = fig.to_html(full_html=True, include_plotlyjs='cdn')
 
 custom_js = """
 <script>
-    // 等待图表加载完成
     setTimeout(function() {
         var myPlot = document.querySelector('.plotly-graph-div');
         if (myPlot) {
             myPlot.on('plotly_click', function(data){
-                // 提取点击的国家名称
                 var countryName = data.points[0].hovertext;
-                // 向外层的 index.html 发送消息
                 window.parent.postMessage({
                     type: 'MAP_CLICKED',
                     country: countryName
@@ -57,11 +66,9 @@ custom_js = """
 </script>
 """
 
-# 将自定义脚本添加到 HTML 末尾
 final_html = html_string.replace('</body>', f'{custom_js}</body>')
 
-# 保存为文件
 with open("interactive_map.html", "w", encoding="utf-8") as f:
     f.write(final_html)
 
-print("🎉 Success! interactive_map.html has been generated with click events enabled.")
+print("🎉 Success! interactive_map.html has been generated with mobile layout fixes.")

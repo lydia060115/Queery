@@ -6,15 +6,13 @@
 }
 body {
     margin: 0;
-    /* 增强了颜色的对比度，模拟水粉与水彩交融的笔触感 */
-    background: linear-gradient(-45deg, #fbe4e4, #e2e8f4, #e4f0e5, #fcf4e6);
-    background-size: 400% 400%;
-    animation: gradientFlow 15s ease infinite;
+    background: linear-gradient(-45deg, #eed2d2, #f4dfc9, #eef0ce, #d2e6d2, #c9daea, #dfcce6);
+    background-size: 600% 600%; /* 尺寸调大以适应6个颜色 */
+    animation: gradientFlow 20s ease infinite; /* 动画调慢更优雅 */
     color: #333;
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
 }
-
 @keyframes gradientFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -439,9 +437,31 @@ header, .mobile-nav {
     background: transparent !important;
 }
 
+/* 1. 遮罩层：稍微暗一点点，保持透明清爽，不要死黑 */
+.bottom-sheet-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.25); /* 把 0.7 改成 0.25，变成非常淡的透明灰 */
+    z-index: 9999; 
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* 2. 国家卡片：恢复原有的 100% 明亮纯白色，拒绝发暗发灰 */
 .bottom-sheet {
-    background: rgba(255, 255, 255, 0.4) !important; /* 半透明白色 */
-    backdrop-filter: blur(15px); /* 强效毛玻璃模糊 */
-    -webkit-backdrop-filter: blur(15px);
-    border-top: 1px solid rgba(255, 255, 255, 0.6); /* 边缘高光 */
+    position: fixed;
+    bottom: -100%; 
+    left: 0;
+    width: 100vw;
+    background: #ffffff !important; /* 强制改回纯白色，恢复最高亮度 */
+    border-radius: 20px 20px 0 0;
+    padding: 24px 20px 40px 20px;
+    z-index: 10000; 
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    /* 清除多余的毛玻璃滤镜，保持文字最清晰 */
+    backdrop-filter: none; 
+    -webkit-backdrop-filter: none;
+    border-top: none;
 }

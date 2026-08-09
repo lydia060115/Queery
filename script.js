@@ -16,7 +16,7 @@ function toggleAccordion(element) {
     icon.textContent = item.classList.contains('active') ? '-' : '+';
 }
 
-// 2. 国家弹窗文案数据 (已扩充：美、中、加、巴、南非 + 墨、俄、英、法、德、波兰)
+// 2. 国家弹窗文案数据 
 const countryData = {
     "United States": {
         status: "Federal Marriage Equality / Polarized Reality",
@@ -26,7 +26,8 @@ const countryData = {
         status: "No Legal Recognition / Grassroots Resilience",
         routine: "While there is no nationwide marriage equality and media censorship of LGBTQ+ topics exists, vibrant communities thrive in major cities. Although large public events like Shanghai Pride have been paused, grassroots activism and private social events continue. Innovatively, many same-sex couples use 'Mutual Guardianship' (意定监护) agreements as a legal workaround to secure basic medical decision-making and property rights."
     },
-    "Taiwan, China": {
+    // 将字典的 Key 改回 "Taiwan"，和地图传过来的数据完全匹配
+    "Taiwan": {
         status: "Marriage Equality / First in Asia",
         routine: "In 2019, Taiwan became the first region in Asia to legalize same-sex marriage. It hosts one of the largest Pride parades in East Asia (Taiwan Pride) in Taipei every October. The legal framework provides robust protections and marriage rights, making it a highly vibrant and legally protected environment for the LGBTQ+ community."
     },
@@ -79,7 +80,12 @@ window.addEventListener('message', function(event) {
         const clickedCountry = event.data.country;
         const data = countryData[clickedCountry];
         
-        document.getElementById('sheetCountryName').textContent = clickedCountry;
+        // 【核心修改】：拦截 "Taiwan"，强制把标题替换为 "Taiwan, China"
+        if (clickedCountry === "Taiwan") {
+            document.getElementById('sheetCountryName').textContent = "Taiwan, China";
+        } else {
+            document.getElementById('sheetCountryName').textContent = clickedCountry;
+        }
         
         if (data) {
             document.getElementById('sheetStatus').textContent = data.status;

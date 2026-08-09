@@ -4,16 +4,39 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* 1. 基础设定 (移除原本的背景代码) */
 body {
     margin: 0;
-    background: linear-gradient(-45deg, #eed2d2, #f4dfc9, #eef0ce, #d2e6d2, #c9daea, #dfcce6);
-    background-size: 600% 600%; /* 尺寸调大以适应6个颜色 */
-    animation: gradientFlow 20s ease infinite; /* 动画调慢更优雅 */
     color: #333;
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
 }
-@keyframes gradientFlow {
+
+/* 2. 终极解法：创建一个固定在最底层的“全屏流体画布” */
+body::before {
+    content: "";
+    position: fixed; /* 永远固定在视口，不随页面滚动拉伸 */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* 垫在最底层，绝不遮挡内容 */
+    
+    /* 淡淡的彩虹色系 (Pastel Rainbow) */
+    background: linear-gradient(
+        -45deg, 
+        #FFEBEE, /* 极淡粉 */
+        #FFF8E1, /* 极淡黄 */
+        #E8F5E9, /* 极淡绿 */
+        #E3F2FD, /* 极淡蓝 */
+        #F3E5F5  /* 极淡紫 */
+    );
+    background-size: 300% 300%;
+    animation: rainbowFlow 12s ease-in-out infinite alternate;
+}
+
+/* 3. 优化后的彩虹流动动画 */
+@keyframes rainbowFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }

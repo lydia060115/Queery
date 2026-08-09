@@ -488,3 +488,42 @@ header, .mobile-nav {
     -webkit-backdrop-filter: none;
     border-top: none;
 }
+/* === 标题色彩焕新：注入高饱和度的明艳活力 === */
+
+/* 1. 模块主标题 & 地图标题：明艳跳跃的彩虹糖渐变色 */
+.map-intro h2,
+.module-title {
+    background: linear-gradient(135deg, #FF1A5F, #FF9500, #00D23A, #007AFF, #B51AFF) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important; /* 补上这一行，满足编辑器的强迫症 */
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 800 !important;
+    font-size: 28px !important;
+    filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.08)); /* 增加立体透亮感 */
+}
+
+/* 2. 自然界卡片小标题 (企鹅/长颈鹿等)：充满生机的亮翠绿 */
+.carousel-card h3 { 
+    color: #00B347 !important; 
+    font-weight: 800 !important;
+}
+
+/* 3. 历史时间轴：年份用活泼的火龙果粉，事件标题用电光紫 */
+.timeline-date {
+    color: #FF0066 !important;
+    font-size: 22px !important;
+}
+.timeline-content h4 { 
+    color: #6200EA !important; 
+    font-weight: 800 !important;
+    font-size: 17px !important;
+}
+
+/* 4. 地图点击后的弹窗国家名字：明亮的蓝紫高光渐变 */
+#sheetCountryName { 
+    background: linear-gradient(90deg, #007AFF, #B51AFF) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important; /* 补上这一行，满足编辑器的强迫症 */
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 800 !important;
+}

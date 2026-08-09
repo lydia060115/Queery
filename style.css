@@ -336,3 +336,73 @@ header {
 }
 .sheet-content h4 { font-size: 16px; margin-bottom: 8px; color: #732982; }
 .sheet-content p { font-size: 14px; line-height: 1.6; color: #555; }
+/* --- Pronouns & Inclusivity Section --- */
+#pronouns-section {
+    background-color: #ffffff; 
+}
+
+.pronoun-intro {
+    padding: 0 10px 20px 10px;
+}
+.pronoun-intro p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.pronoun-visual-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* 顶部插画专属样式调优 */
+.pronoun-illustration {
+    width: 100%;
+    height: auto; /* 保证图片等比例缩放，绝对不拉伸变形 */
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05); /* 增加一圈极其微弱的边框，完美融入白色背景 */
+    background-color: #ffffff;
+}
+
+/* 2x2 彩色网格布局 */
+.pronoun-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 分为两列 */
+    gap: 15px; /* 卡片之间的间距 */
+    width: 100%;
+}
+
+.pronoun-card {
+    padding: 20px 15px;
+    border-radius: 16px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.pronoun-card h4 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.pronoun-card p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+/* 柔和的马卡龙色系背景 */
+.c-bg-pink { background-color: #FFD1DC; }
+.c-bg-blue { background-color: #AEC6CF; }
+.c-bg-yellow { background-color: #FDFD96; }
+.c-bg-purple { background-color: #C3B1E1; }

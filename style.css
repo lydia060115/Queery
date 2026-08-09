@@ -112,7 +112,7 @@ header {
 
 .map-container {
     width: 100vw;
-    height: 80vh; 
+    height: 55vh; 
     position: relative;
     background: #FAF9F6;
     z-index: 10;

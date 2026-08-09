@@ -23,30 +23,42 @@ fig.update_layout(
         showframe=False, 
         showcoastlines=True,
         bgcolor='rgba(0,0,0,0)',
-        projection_scale=1.2, # 稍微放大初始地图
+        projection_scale=1.2, 
     ),
     paper_bgcolor='rgba(0,0,0,0)',
     plot_bgcolor='rgba(0,0,0,0)',
-    margin=dict(r=0, t=0, l=0, b=0), # 边距彻底清零
+    margin=dict(r=0, t=0, l=0, b=0), 
     dragmode="pan",
-    # 强制图例长条紧贴右侧且极细
+    autosize=True, # 强制自适应大小
     coloraxis_colorbar=dict(
-        title=None,           # 完全去掉标题
-        thickness=8,          # 极细（只有 8px 宽）
-        len=0.7,              # 缩短一点，留出上下空间
-        x=0.98,               # 贴紧最右侧
+        title=None,           
+        thickness=8,          
+        len=0.7,              
+        x=0.98,               
         xanchor="right",
         y=0.5,
         yanchor="middle",
         tickfont=dict(size=10, color="#666"),
-        outlinewidth=0        # 去除长条边框，更清爽
+        outlinewidth=0        
     )
 )
 
-# 4. 关键：导出时，强制隐藏右上角的原生态工具栏 (displayModeBar: False)
-html_string = fig.to_html(full_html=True, include_plotlyjs='cdn', config={'displayModeBar': False})
+# 4. 关键更新：开启 responsive，设置默认宽高为 100%
+html_string = fig.to_html(
+    full_html=True, 
+    include_plotlyjs='cdn', 
+    config={'displayModeBar': False, 'responsive': True},
+    default_width='100%',
+    default_height='100%'
+)
 
+# 注入消除滚动条和强制撑满的 CSS 以及点击事件
 custom_js = """
+<style>
+    /* 强制 iframe 内部的地图元素 100% 填满，不留白边 */
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #FAF9F6; }
+    .plotly-graph-div { height: 100% !important; width: 100% !important; }
+</style>
 <script>
     setTimeout(function() {
         var myPlot = document.querySelector('.plotly-graph-div');
@@ -68,4 +80,4 @@ final_html = html_string.replace('</body>', f'{custom_js}</body>')
 with open("interactive_map.html", "w", encoding="utf-8") as f:
     f.write(final_html)
 
-print("🎉 Success! 终极版地图已生成！")
+print("🎉 Success! 手机端自适应修复版地图已生成！")

@@ -149,12 +149,6 @@ header {
 .nature-intro {
     padding: 0 10px 25px 10px;
 }
-.nature-intro p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #444;
-    text-align: left; 
-}
 .nature-intro p strong {
     color: #008026; 
     font-weight: 600;
@@ -344,12 +338,21 @@ header {
 .pronoun-intro {
     padding: 0 10px 20px 10px;
 }
+/* 统一处理长文本段落的排版，实现均匀的两端对齐 */
+.nature-intro p, 
 .pronoun-intro p {
     font-size: 15px;
     line-height: 1.8;
     color: #444;
     margin-bottom: 15px;
-    text-align: left;
+    
+    /* 1. 开启两端对齐 */
+    text-align: justify; 
+    
+    /* 2. 开启自动连字符 (最关键的一步) */
+    -webkit-hyphens: auto; /* 适配苹果手机浏览器 (Safari) */
+    -ms-hyphens: auto;     /* 适配旧版 IE/Edge */
+    hyphens: auto;         /* 标准语法 */
 }
 
 .pronoun-visual-container {

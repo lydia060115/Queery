@@ -1,27 +1,31 @@
-/* --- Basic Reset & Body --- */
+/* --- Basic Reset & Art Typography --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 body {
-    background-color: #f9f9f9;
+    background-color: #FAF9F6;
     color: #333;
     overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, .rainbow-text {
+    font-family: 'Playfair Display', serif;
 }
 
 /* --- Header & Logo Animation --- */
 header {
     background-color: #ffffff; 
-    padding: 15px 20px;
+    padding: 15px 20px 10px 20px;
     display: flex;
     align-items: center;
     justify-content: center; 
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
 }
 .logo-container {
     display: flex;
@@ -38,7 +42,7 @@ header {
     transform: rotate(20deg) scale(1.1);
 }
 .rainbow-text {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 800;
     letter-spacing: 1px;
     display: flex;
@@ -51,19 +55,67 @@ header {
     transform: translateY(-5px) rotate(-5deg) scale(1.1);
 }
 
-/* 6-Color Pride Flag Mapping */
-.c-red    { color: #E40303; } /* Q */
-.c-orange { color: #FF8C00; } /* u */
-.c-yellow { color: #FFED00; } /* e */
-.c-green  { color: #008026; } /* e */
-.c-blue   { color: #24408E; } /* r */
-.c-purple { color: #732982; } /* y */
+.c-red    { color: #E40303; } 
+.c-orange { color: #FF8C00; } 
+.c-yellow { color: #FFED00; } 
+.c-green  { color: #008026; } 
+.c-blue   { color: #24408E; } 
+.c-purple { color: #732982; } 
 
-/* --- Map Container --- */
+/* --- Mobile Navigation --- */
+.mobile-nav {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    background: #ffffff;
+    padding: 10px 20px 15px 20px;
+    position: sticky;
+    top: 60px; /* 吸顶时紧贴 Header */
+    z-index: 99;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+.mobile-nav::-webkit-scrollbar { display: none; }
+.mobile-nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 25px;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+.mobile-nav a:hover, .mobile-nav a:active {
+    color: #E40303;
+    border-bottom: 2px solid #E40303;
+}
+
+/* --- Map Intro & Container --- */
+.map-intro {
+    padding: 30px 25px 20px 25px;
+    background: #FAF9F6;
+}
+.map-intro h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #222;
+}
+.map-intro p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 10px;
+}
+.map-intro .hint {
+    font-size: 12px;
+    color: #888;
+}
+
 .map-container {
     width: 100vw;
-    height: 60vh;
+    height: 80vh; 
     position: relative;
+    background: #FAF9F6;
+    z-index: 10;
 }
 .map-container iframe {
     width: 100%;
@@ -76,7 +128,7 @@ header {
     padding: 30px 20px;
     background: white;
     position: relative;
-    z-index: 10;
+    z-index: 20;
 }
 .content-module.first-module {
     border-radius: 20px 20px 0 0;
@@ -84,16 +136,30 @@ header {
     box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
 }
 .bg-light {
-    background-color: #f9f9f9;
+    background-color: #FAF9F6;
 }
 .module-title {
     text-align: center;
     margin-bottom: 25px;
-    font-size: 22px;
+    font-size: 26px;
     color: #333;
 }
 
-/* --- Carousel for Nature Section --- */
+/* --- Nature Section & Carousel --- */
+.nature-intro {
+    padding: 0 10px 25px 10px;
+}
+.nature-intro p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    text-align: justify; 
+}
+.nature-intro p strong {
+    color: #008026; 
+    font-weight: 600;
+}
+
 .carousel-container {
     display: flex;
     overflow-x: auto;
@@ -101,19 +167,44 @@ header {
     gap: 15px;
     padding-bottom: 10px; 
 }
+.carousel-container::-webkit-scrollbar { display: none; }
 .carousel-card {
     min-width: 85%;
     background: white;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 16px; 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06); 
     scroll-snap-align: center;
-    border-left: 4px solid #008026; 
+    border-top: 5px solid #008026; 
+    display: flex;
+    flex-direction: column;
 }
-.carousel-card h3 { margin-bottom: 10px; color: #008026; display: flex; align-items: center; gap: 8px;}
-.carousel-card p { font-size: 14px; line-height: 1.6; margin-bottom: 15px;}
-.carousel-card small { font-size: 11px; color: #888; display: block; font-style: italic;}
-.carousel-container::-webkit-scrollbar { display: none; }
+.carousel-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; 
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+.carousel-card h3 { 
+    margin-bottom: 10px; 
+    color: #222; 
+    font-size: 22px;
+}
+.carousel-card p { 
+    font-size: 14px; 
+    line-height: 1.6; 
+    margin-bottom: 15px;
+    color: #555;
+    flex-grow: 1; 
+}
+.carousel-card small { 
+    font-size: 11px; 
+    color: #aaa; 
+    font-style: italic;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
 
 /* --- Timeline Styles --- */
 .timeline {
@@ -140,7 +231,7 @@ header {
     margin-bottom: 5px;
     font-size: 18px;
 }
-.timeline-content h4 { margin-bottom: 5px; font-size: 16px; }
+.timeline-content h4 { margin-bottom: 5px; font-size: 16px; font-family: 'Poppins', sans-serif;}
 .timeline-content p { font-size: 14px; line-height: 1.5; color: #555; }
 .timeline-event::before {
     content: '';
@@ -199,16 +290,16 @@ header {
     color: #444;
 }
 .accordion-item.active .accordion-content {
-    max-height: 200px; 
+    max-height: 250px; 
     padding: 1px 16px; 
 }
 
-/* --- Bottom Sheet Styles --- */
+/* --- Bottom Sheet Styles (确保覆盖于所有图层之上) --- */
 .bottom-sheet-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     background: rgba(0,0,0,0.4);
-    z-index: 999;
+    z-index: 9999; /* 调高权重确保不被挡住 */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -221,7 +312,7 @@ header {
     background: white;
     border-radius: 20px 20px 0 0;
     padding: 24px 20px 40px 20px;
-    z-index: 1000;
+    z-index: 10000; /* 调高权重 */
     transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
     box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
 }
@@ -237,7 +328,7 @@ header {
     background: none; border: none; font-size: 28px; color: #888;
     cursor: pointer;
 }
-#sheetCountryName { font-size: 22px; margin-bottom: 10px; color: #333; }
+#sheetCountryName { font-size: 22px; margin-bottom: 10px; color: #333; font-family: 'Playfair Display', serif;}
 .sheet-tag {
     display: inline-block; padding: 6px 14px; background: #f0f5ff;
     border-radius: 15px; font-size: 13px; color: #24408E; font-weight: bold;

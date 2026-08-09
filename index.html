@@ -4,56 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Queery | Explore the Spectrum</title>
-    <!-- 引入外部 CSS 样式表 -->
+    <!-- 引入艺术字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header Logo Area -->
+    <!-- Header Logo -->
     <header>
         <div class="logo-container">
             <img class="cookie-img" src="https://emojigraph.org/media/apple/cookie_1f36a.png" alt="Cookie">
             <div class="rainbow-text">
-                <span class="c-red">Q</span>
-                <span class="c-orange">u</span>
-                <span class="c-yellow">e</span>
-                <span class="c-green">e</span>
-                <span class="c-blue">r</span>
-                <span class="c-purple">y</span>
+                <span class="c-red">Q</span><span class="c-orange">u</span><span class="c-yellow">e</span><span class="c-green">e</span><span class="c-blue">r</span><span class="c-purple">y</span>
             </div>
         </div>
     </header>
 
-    <!-- Map Section -->
+    <!-- 顶部滑动导航栏 -->
+    <nav class="mobile-nav">
+        <a href="#map-section">The Map</a>
+        <a href="#nature-section">Nature</a>
+        <a href="#history-section">History</a>
+        <a href="#spectrum-section">Spectrum</a>
+    </nav>
+
+    <!-- 地图说明区域 -->
+    <section class="map-intro" id="map-section">
+        <h2>The Colors of Equality</h2>
+        <p>What do these colors mean? This interactive map visualizes the global <strong>Legal Equality Index</strong>. Countries in warm, light tones represent regions where LGBTQ+ identities face severe legal restrictions, while cooler, deeper tones (like deep purple and blue) highlight nations with robust protections, such as marriage equality and anti-discrimination laws.</p>
+        <p class="hint"><em>Scroll, pinch to zoom, and tap on a country to explore its reality.</em></p>
+    </section>
+
+    <!-- 交互地图区域 -->
     <section class="map-container">
-        <!-- 引入 Python 生成的地图 -->
         <iframe src="interactive_map.html"></iframe>
     </section>
 
-    <!-- The Nature Section -->
-    <section class="content-module first-module">
+    <!-- 自然界多样性科普 -->
+    <section class="content-module first-module" id="nature-section">
         <h2 class="module-title">Nature's Diversity</h2>
+        
+        <div class="nature-intro">
+            <p>For centuries, a common misconception has framed same-sex behavior and diverse gender expressions as exclusively "human constructs" or even "unnatural." However, exhaustive biological research tells a profoundly different story. Homosexual, bisexual, and non-binary behaviors have been scientifically documented in over <strong>450 different species</strong> across the animal kingdom. From mammals to birds, diversity is a fundamental, naturally occurring feature of life on Earth.</p>
+        </div>
+
         <div class="carousel-container">
             <div class="carousel-card">
-                <h3>Penguins 🐧</h3>
-                <p>In nature and zoos, same-sex penguin couples are frequently observed courting, nesting, and successfully incubating and raising abandoned eggs together.</p>
+                <img src="./penguin.png" alt="Penguins">
+                <h3>Penguins</h3>
+                <p>In nature and zoos globally, same-sex penguin couples are frequently observed courting, building nests, and successfully incubating and raising abandoned eggs together, proving their capability for lifelong partnership and parenting.</p>
                 <small>Source: Biological Exuberance, B. Bagemihl (1999)</small>
             </div>
             <div class="carousel-card">
-                <h3>Bonobos 🐒</h3>
-                <p>As one of humanity's closest living primate relatives, nearly all individuals in bonobo societies are bisexual. They use same-sex intimacy to resolve conflicts and maintain peace.</p>
+                <img src="./bonobo.png" alt="Bonobos">
+                <h3>Bonobos</h3>
+                <p>As one of humanity's closest living primate relatives, nearly all individuals in bonobo societies exhibit bisexual behavior. They utilize same-sex intimacy to resolve conflicts, share resources, and maintain profound social peace.</p>
                 <small>Source: Biological Exuberance, B. Bagemihl (1999)</small>
             </div>
             <div class="carousel-card">
-                <h3>Giraffes 🦒</h3>
-                <p>Intimate behavior between male giraffes is highly frequent. In some populations, over 90% of mounting behaviors occur between males.</p>
+                <img src="./giraffe.png" alt="Giraffes">
+                <h3>Giraffes</h3>
+                <p>Intimate behavior between male giraffes is exceptionally frequent. In some wild populations, over 90% of mounting and affection-building behaviors occur between males, often involving gentle neck-rubbing.</p>
                 <small>Source: Biological Exuberance, B. Bagemihl (1999)</small>
             </div>
         </div>
     </section>
 
-    <!-- The History Section -->
-    <section class="content-module bg-light">
+    <!-- 历史里程碑 -->
+    <section class="content-module bg-light" id="history-section">
         <h2 class="module-title">Milestones</h2>
         <div class="timeline">
             <div class="timeline-event">
@@ -87,23 +107,27 @@
         </div>
     </section>
 
-    <!-- The Spectrum Section (Accordion) -->
-    <section class="content-module" style="padding-bottom: 50px;">
+    <!-- 光谱深度百科 (去中文版) -->
+    <section class="content-module" id="spectrum-section" style="padding-bottom: 80px;">
         <h2 class="module-title">The Spectrum</h2>
         
+        <div class="nature-intro">
+            <p>The acronym <strong>LGBTQ+</strong> represents a beautifully diverse and intersectional community. To truly understand it, we must recognize that human sexuality and gender exist on a fluid spectrum, not in rigid binary boxes. Here is a breakdown of the core spectrum:</p>
+        </div>
+
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                <div class="accordion-title"><span class="c-orange">S</span>exual Orientation</div>
+                <div class="accordion-title">Sexual Orientation</div>
                 <div class="accordion-icon">+</div>
             </div>
             <div class="accordion-content">
-                <p>Refers to who you are attracted to emotionally, romantically, or sexually (e.g., Lesbian, Gay, Bisexual, Asexual). It's about your internal sense of connection.</p>
+                <p>Refers to who you are attracted to emotionally, romantically, or sexually. It is about your internal sense of connection to others.</p>
             </div>
         </div>
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                <div class="accordion-title"><span class="c-blue">G</span>ender Identity</div>
+                <div class="accordion-title">Gender Identity</div>
                 <div class="accordion-icon">+</div>
             </div>
             <div class="accordion-content">
@@ -113,16 +137,66 @@
 
         <div class="accordion-item">
             <div class="accordion-header" onclick="toggleAccordion(this)">
-                <div class="accordion-title"><span class="c-red">Q</span>ueer</div>
+                <div class="accordion-title"><span class="c-red">L</span> - Lesbian</div>
                 <div class="accordion-icon">+</div>
             </div>
             <div class="accordion-content">
-                <p>An inclusive umbrella term encompassing people who are not heterosexual or cisgender. It can also represent "Questioning" for those exploring their identity.</p>
+                <p>A woman or feminine-identifying person who is emotionally, romantically, or sexually attracted to other women. It represents a specific sexual orientation focused on same-sex attraction among women.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-orange">G</span> - Gay</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p>Individuals who are primarily attracted to members of the same sex or gender. While historically used to refer to men attracted to men, it is widely used today as an umbrella term for anyone experiencing same-sex attraction.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-yellow">B</span> - Bisexual</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p>A person who has the capacity to form physical, romantic, and/or emotional attractions to those of the same gender or to those of another gender. This attraction does not have to be split 50/50, and it can be fluid over time.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-green">T</span> - Transgender</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p><strong>Important distinction:</strong> Unlike the previous letters which describe <em>sexual orientation</em> (who you are attracted to), Transgender describes <em>gender identity</em> (who you are). It refers to individuals whose gender identity differs from the sex they were assigned at birth.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-blue">Q</span> - Queer / Questioning</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p><strong>Queer</strong> is an inclusive, umbrella term reclaimed by the community to describe sexual orientations and gender identities that are not exclusively heterosexual or cisgender. <strong>Questioning</strong> refers to the completely natural process of exploring and discovering one's own sexual orientation or gender identity.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title"><span class="c-purple">+</span> - The Plus</div>
+                <div class="accordion-icon">+</div>
+            </div>
+            <div class="accordion-content">
+                <p>The "Plus" is perhaps the most important symbol. It signifies that the spectrum is vast, inclusive, and ever-evolving. It explicitly includes all other identities not covered by the five initials, such as <strong>Pansexual</strong>, <strong>Asexual</strong>, <strong>Non-binary</strong>, and <strong>Intersex</strong>.</p>
             </div>
         </div>
     </section>
 
-    <!-- 底部滑动弹窗 (Bottom Sheet) -->
+    <!-- 底部滑动弹窗 (国家数据卡片) -->
     <div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeSheet()"></div>
     <div class="bottom-sheet" id="bottomSheet">
         <div class="sheet-drag-handle"></div>
@@ -135,7 +209,7 @@
         </div>
     </div>
 
-    <!-- 引入外部 JavaScript 逻辑 -->
+    <!-- 引入外部脚本 -->
     <script src="script.js"></script>
 </body>
 </html>

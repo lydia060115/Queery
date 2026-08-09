@@ -26,6 +26,10 @@ const countryData = {
         status: "No Legal Recognition / Grassroots Resilience",
         routine: "While there is no nationwide marriage equality and media censorship of LGBTQ+ topics exists, vibrant communities thrive in major cities. Although large public events like Shanghai Pride have been paused, grassroots activism and private social events continue. Innovatively, many same-sex couples use 'Mutual Guardianship' (意定监护) agreements as a legal workaround to secure basic medical decision-making and property rights."
     },
+    "Taiwan, China": {
+        status: "Marriage Equality / First in Asia",
+        routine: "In 2019, Taiwan became the first region in Asia to legalize same-sex marriage. It hosts one of the largest Pride parades in East Asia (Taiwan Pride) in Taipei every October. The legal framework provides robust protections and marriage rights, making it a highly vibrant and legally protected environment for the LGBTQ+ community."
+    },
     "Canada": {
         status: "Marriage Equality & Protections",
         routine: "Toronto Pride is one of the largest globally, with high-level government officials regularly participating. The country has comprehensive anti-discrimination laws reflecting strong societal acceptance."
